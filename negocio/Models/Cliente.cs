@@ -125,5 +125,18 @@ namespace negocio.Models
             return clientes;
         }
 
+        public static void ApagarClientePorId(int id)
+        {
+            using (var conn = new MySqlConnection(conexao))
+            {
+                conn.Open();
+                var query = $"delete from clientes where id='{id}'";
+                var command = new MySqlCommand(query, conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            
+        }
+
     }
 }
