@@ -67,7 +67,7 @@ namespace negocio.Models
             return clientes;
         }
 
-        public static Cliente BuscaPorId(int id)
+        public static Cliente? BuscaPorId(int id)
         {
             var cliente = new Cliente();
             using (var conn = new MySqlConnection(conexao))
@@ -84,10 +84,10 @@ namespace negocio.Models
                 }
                 conn.Close();
             }
-            return cliente;
+            return cliente.Id == 0 ? null : cliente;
         }
 
-        public static void Editar(int id, string nome, string email)
+        public static void Editar(int id, string nome, string? email)
         {
                 using (var conn = new MySqlConnection(conexao))
                 {

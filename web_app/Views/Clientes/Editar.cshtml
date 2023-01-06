@@ -1,0 +1,26 @@
+﻿@using negocio.Models
+@{
+    Cliente cliente = ViewBag.cliente;
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Editar Cliente - @cliente.Nome</h1>
+</div>
+<br />
+<form action="/clientes/@cliente.Id/atualizar" method="post">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input name="nome" type="text" class="form-control" id="nome" value="@cliente.Nome" placeholder="Escreva o Nome">
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="email">Email</label>
+        <input name="email" type="email" class="form-control" value="@cliente.Email" id="email" placeholder="Digite seu Email">
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Enviar</button>
+  <a href="/clientes" class="btn btn-secondary">Voltar</a>
+
+</form>
+
